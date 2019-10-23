@@ -4,7 +4,7 @@
 // Scrivi anche la posizione della lista in cui il nuovo utente si trova
 
 // variabili
-var userSurname, listSurname, check, i, j;
+var userSurname, listSurname, listSurnameOrder, check, i, j;
 
 // creazione array cognomi
 listSurname = ['Rossi', 'Ferrari', 'Russo', 'Bianchi', 'Costa', 'Fontana', 'Rota', 'Lombardi', 'Mancini', 'Brambilla', 'Fumagalli'];
@@ -13,26 +13,25 @@ listSurname = ['Rossi', 'Ferrari', 'Russo', 'Bianchi', 'Costa', 'Fontana', 'Rota
 userSurname = prompt('Inserisci il tuo cognome');
 listSurname.push(userSurname);
 
+// ordinamento lista cognomi
+listSurnameOrder = listSurname.slice();
+listSurnameOrder.sort();
+
 // output lista non ordinata
-// document.getElementById('js-listSurname').innerHTML = (listSurname);
 for (i = 0; i < listSurname.length; i++) {
   document.getElementById('js-listSurname').innerHTML += ('<li>' + listSurname[i] + '</li>');
 }
 
-// ordinamento lista cognomi
-listSurname.sort();
-
 // output lista in ordine alfabetico
-// document.getElementById('js-listSurnameOrder').innerHTML = (listSurname);
-for (i = 0; i < listSurname.length; i++) {
-  document.getElementById('js-listSurnameOrder').innerHTML += ('<li>' + listSurname[i] + '</li>');
+for (i = 0; i < listSurnameOrder.length; i++) {
+  document.getElementById('js-listSurnameOrder').innerHTML += ('<li>' + listSurnameOrder[i] + '</li>');
 }
 
 // confronto del cognome utente con lista ordinata
 j = 0;
 check = false;
-while (j < listSurname.length && check ===false) {
-  if (listSurname[j] === userSurname){
+while (j < listSurnameOrder.length && check ===false) {
+  if (listSurnameOrder[j] === userSurname){
     check = true;
     document.getElementById('js-position').innerHTML = (j+1 + ' della lista');
   }
